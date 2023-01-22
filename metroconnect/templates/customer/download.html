@@ -1,0 +1,123 @@
+{% load static %}
+{% block content %}
+{% include 'customer/menu.html' %}
+
+            <!-- Navbar End -->
+
+            <!-- Navbar End -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="{% static 'admin/qrcode.js' %}">
+</script>
+    <script type="text/javascript" src="{% static 'admin/html5-qrcode.js' %}">
+</script>
+   
+
+            <!-- Typography Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                   
+                
+                    <div class="col-sm-12">
+								<div id="GFG"> 
+  <form name="QRform" id="QRform">
+      <textarea name="textField" onkeyup='updateQRCode(this.value)' style="display:none;" onclick="this.focus();this.select();">{{res.customerid}}</textarea>
+    </form>
+    
+    
+                        <div class="bg-light rounded h-100 p-4">
+						<h2>Kochi Metro</h2>
+							 <div id="qrcode"></div>
+
+                            <h6 class="mb-4">Train Number:{{res.trainno}}</h6>
+                            <dl class="row mb-0">
+                                <dt class="col-sm-4">location</dt>
+                                <dd class="col-sm-8">{{res.startstation}} &nbsp;to &nbsp;{{res.endstation}}</dd>
+
+                                <dt class="col-sm-4">Date</dt>
+                                <dd class="col-sm-8">{{res.date}}</dd>
+
+                                <dt class="col-sm-4">Rate</dt>
+                                <dd class="col-sm-8"> {{res.rate}}</dd>
+
+                                
+
+                            </dl>
+							<br><br><br>
+							<center>
+                        </div>
+						</div>
+												
+             <center><input type="button" value="print" class="btn btn-primary" onclick="printDiv()"></center>
+
+                    </div>
+                    
+                  
+                </div>
+            </div>
+			</div>
+            <!-- Typography End -->
+	</div>	</div>	</div>	</div>
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+    <script type="text/javascript">
+      function updateQRCode(text) {
+
+        var element = document.getElementById("qrcode");
+
+        var bodyElement = document.body;
+        if(element.lastChild)
+          element.replaceChild(showQRCode(text), element.lastChild);
+        else
+          element.appendChild(showQRCode(text));
+
+      }
+
+      updateQRCode('www.tutorialspoint.com');
+    </script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'admin/lib/chart/chart.min.js' %}"></script>
+    <script src="{% static 'admin/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'admin/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'admin/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'admin/lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'admin/lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<script>
+        function printDiv() {
+            var divContents = document.getElementById("GFG").innerHTML;
+            var a = window.open('', '', 'height=500, width=500');
+            a.document.write('<html>');
+            a.document.write('<body > <h1>Div contents are <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+        }
+    </script>
+    <!-- Template Javascript -->
+    <script src="{% static 'admin/js/main.js' %}"></script>
+
+{% endblock %}
+</body>
+
+</html>
